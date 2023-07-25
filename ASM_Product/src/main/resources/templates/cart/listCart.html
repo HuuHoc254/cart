@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Gio Hang</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="mb-3">Cart</h1>
+
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="item : ${cartItems}">
+      <td th:text="${item.product.productName}"></td>
+
+      <td th:text="${item.product.unitPrice}"></td>
+
+      <td>
+
+
+          <a th:href="@{/cart/update-quantity(id=${item.product.id}, quantity=${item.quantity}-1)}">
+            <button class="btn btn-sm btn-secondary mr-2">-</button>
+          </a>
+
+        <span th:text="${item.quantity}"></span>
+
+          <a th:href="@{/cart/update-quantity(id=${item.product.id}, quantity=${item.quantity}+1)}">
+            <button class="btn btn-sm btn-secondary mr-2">+</button>
+          </a>
+
+      </td>
+
+      <td th:text="${item.product.unitPrice * item.quantity}"></td>
+
+      <td>
+
+
+          <a th:href="@{/cart/delete(id=${item.product.id})}">
+            <button class="btn btn-sm btn-danger">
+              Delete
+            </button>
+          </a>
+
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+
+  <h4>Total: <span></span> VND</h4>
+
+
+  <a th:href="@{/cart/checkout}">
+  <button class="btn btn-primary">Thanh toan</button>
+  </a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
