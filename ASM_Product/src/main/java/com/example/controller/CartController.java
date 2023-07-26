@@ -28,6 +28,7 @@ public class CartController {
     @GetMapping
     public String showCart(Model model) {
         model.addAttribute("cartItems", cart.getItems());
+        model.addAttribute("total", cart.getTotal());
         return "cart/listCart";
     }
 
@@ -62,6 +63,12 @@ public class CartController {
         order.setDate(LocalDate.now());
         OrderEntity orderEntity = OrderConverter.toEntity(order);
         orderService.saveOrder(orderEntity, OrderDetailConverter.toEntity(cart.getItems()));
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/empty")
+    public String empty(Model model, @ModelAttribute Order order){
+        cart.emptyCart();
         return "redirect:/cart";
     }
 }

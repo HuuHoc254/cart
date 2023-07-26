@@ -72,6 +72,15 @@ public class CartEntity {
         }
     }
 
+    public double getTotal(){
+        return items.stream()
+                .mapToDouble(orderDetail -> orderDetail.getProduct().getUnitPrice() * orderDetail.getQuantity())
+                .sum();
+    }
+
+    public void emptyCart(){
+        items = new ArrayList<>();
+    }
     private void saveCartToSession() {
         httpSession.setAttribute("cart", this);
     }
