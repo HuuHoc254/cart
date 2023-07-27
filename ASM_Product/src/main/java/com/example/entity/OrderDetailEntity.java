@@ -13,7 +13,7 @@ public class OrderDetailEntity {
     @JoinColumn(name = "product_entity_id")
     private ProductEntity productEntity;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_entity_id")
     private OrderEntity orderEntity;
     private int quantity;

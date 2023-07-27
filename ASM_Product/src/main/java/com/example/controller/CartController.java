@@ -35,8 +35,7 @@ public class CartController {
     @GetMapping("/addToCart")
     public String addToCart(@RequestParam("id") Long productId,Model model) {
         cart.addToCart(productId);
-        model.addAttribute("cartItems", cart.getItems());
-        return "cart/listCart";
+        return "redirect:/products";
     }
 
     @GetMapping("/update-quantity")
@@ -63,7 +62,7 @@ public class CartController {
         order.setDate(LocalDate.now());
         OrderEntity orderEntity = OrderConverter.toEntity(order);
         orderService.saveOrder(orderEntity, OrderDetailConverter.toEntity(cart.getItems()));
-        return "redirect:/cart";
+        return "redirect:/cart/empty";
     }
 
     @GetMapping("/empty")
