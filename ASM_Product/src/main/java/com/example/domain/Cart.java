@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Cart {
 
-    private List<OrderDetail> items ;
+    private List<OrderDetail> items;
 
     public Cart() {
         this.items = new ArrayList<>();
@@ -17,7 +17,6 @@ public class Cart {
     public List<OrderDetail> getItems() {
         return items;
     }
-
 
 
 }

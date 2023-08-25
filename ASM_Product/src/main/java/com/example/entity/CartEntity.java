@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Component
-@Scope( value = "session" , proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CartEntity {
     @Autowired
     private ProductService productService;
@@ -72,15 +72,16 @@ public class CartEntity {
         }
     }
 
-    public double getTotal(){
+    public double getTotal() {
         return items.stream()
                 .mapToDouble(orderDetail -> orderDetail.getProduct().getUnitPrice() * orderDetail.getQuantity())
                 .sum();
     }
 
-    public void emptyCart(){
+    public void emptyCart() {
         items = new ArrayList<>();
     }
+
     private void saveCartToSession() {
         httpSession.setAttribute("cart", this);
     }

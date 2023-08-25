@@ -17,30 +17,31 @@
     </div>
     <div class="row">
         <form th:action="@{/news/search}" th:method="get" class="form-control border-none">
-            <div class="input-group mt-3 mb-3 mx-auto" >
-                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <div class="input-group mt-3 mb-3 mx-auto">
+                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                       aria-describedby="search-addon"/>
                 <button type="submit" class="btn btn-outline-primary">search</button>
             </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Title</th>
-                <th scope="col">Summary</th>
-                <th scope="col">Staff Name</th>
-                <th scope="col">Category Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="news : ${news}">
-                <th scope="row" th:text="${news.newId}"></th>
-                <td th:text="${news.title}"></td>
-                <td th:text="${news.summary}"></td>
-                <td th:text="${news.staff.staffName}"></td>
-                <td th:text="${news.category.cateName}"></td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Staff Name</th>
+                    <th scope="col">Category Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="news : ${news}">
+                    <th scope="row" th:text="${news.newId}"></th>
+                    <td th:text="${news.title}"></td>
+                    <td th:text="${news.summary}"></td>
+                    <td th:text="${news.staff.staffName}"></td>
+                    <td th:text="${news.category.cateName}"></td>
+                </tr>
+                </tbody>
+            </table>
         </form>
     </div>
 </div>

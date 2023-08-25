@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
     public void saveOrder(OrderEntity orderEntity, List<OrderDetailEntity> orderDetailEntity) {
         orderEntity = orderRepository.save(orderEntity);
         OrderEntity finalOrderEntity = orderEntity;
-        orderDetailEntity.forEach(item ->{
+        orderDetailEntity.forEach(item -> {
             item.setOrderEntity(finalOrderEntity);
             System.out.println(item.getId());
         });

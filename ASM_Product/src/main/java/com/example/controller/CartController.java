@@ -33,7 +33,7 @@ public class CartController {
     }
 
     @GetMapping("/addToCart")
-    public String addToCart(@RequestParam("id") Long productId,Model model) {
+    public String addToCart(@RequestParam("id") Long productId, Model model) {
         cart.addToCart(productId);
         return "redirect:/products";
     }
@@ -53,7 +53,7 @@ public class CartController {
     @GetMapping("/checkout")
     public String showForm(Model model) {
         Order order = new Order();
-        model.addAttribute("Order",order);
+        model.addAttribute("Order", order);
         return "cart/checkout";
     }
 
@@ -66,7 +66,7 @@ public class CartController {
     }
 
     @GetMapping("/empty")
-    public String empty(Model model, @ModelAttribute Order order){
+    public String empty(Model model, @ModelAttribute Order order) {
         cart.emptyCart();
         return "redirect:/cart";
     }

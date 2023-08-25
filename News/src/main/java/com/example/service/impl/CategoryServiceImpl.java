@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
+
     @Override
     public List<Category> getAllCategory() {
         return categoryRepository.findAll().stream().map(CategoryConverter::toModel).

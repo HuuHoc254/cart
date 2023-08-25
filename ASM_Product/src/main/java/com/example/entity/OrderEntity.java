@@ -14,6 +14,7 @@ public class OrderEntity {
     private LocalDate orderDate;
     private String customerName;
     private String customerAddress;
+
     public Long getId() {
         return id;
     }

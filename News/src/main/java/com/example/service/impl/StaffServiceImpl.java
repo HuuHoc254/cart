@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class StaffServiceImpl implements StaffService {
     @Autowired
     private StaffRepository staffRepository;
+
     @Override
     public List<Staff> getAllStaff() {
         return staffRepository.findAll().stream().map(StaffConverter::toModel).

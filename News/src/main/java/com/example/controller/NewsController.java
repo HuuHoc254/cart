@@ -23,28 +23,32 @@ public class NewsController {
     private CategoryService categoryService;
     @Autowired
     private StaffService staffService;
+
     @GetMapping
-    public String showListNews(Model model){
+    public String showListNews(Model model) {
         model.addAttribute("news", newService.getAllNew());
         return "home";
     }
+
     @GetMapping("add-new")
-    public String showFormAddNews(Model model){
+    public String showFormAddNews(Model model) {
         List<Category> categories = categoryService.getAllCategory();
         List<Staff> staffs = staffService.getAllStaff();
-        model.addAttribute("news",  new New());
+        model.addAttribute("news", new New());
         model.addAttribute("categories", categories);
         model.addAttribute("staffs", staffs);
         return "add-news";
     }
+
     @PostMapping
-    public String addNews(@ModelAttribute New aNew, Model model){
+    public String addNews(@ModelAttribute New aNew, Model model) {
         newService.create(aNew);
         model.addAttribute("news", newService.getAllNew());
         return "home";
     }
+
     @GetMapping("search")
-    public String getSearch(Model model,  @RequestParam String search){
+    public String getSearch(Model model, @RequestParam String search) {
         model.addAttribute("news", newService.findByTitle(search));
         return "home";
     }

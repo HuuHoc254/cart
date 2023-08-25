@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Service
 public class NewServiceImpl implements NewService {
 
@@ -23,6 +24,7 @@ public class NewServiceImpl implements NewService {
     private CategoryRepository categoryRepository;
     @Autowired
     private StaffRepository staffRepository;
+
     @Override
     public List<New> getAllNew() {
         return newRepository.findAll().stream().map(NewConverter::toModel).
@@ -37,7 +39,7 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public List<New> findByTitle(String key) {
-        return newRepository.findByTitleContainingOrSummaryContainingOrCategory_CateNameContaining(key,key,key).stream().map(NewConverter::toModel).
+        return newRepository.findByTitleContainingOrSummaryContainingOrCategory_CateNameContaining(key, key, key).stream().map(NewConverter::toModel).
                 collect(Collectors.toList());
     }
 
